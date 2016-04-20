@@ -1,5 +1,6 @@
 Enforce Content-Type middleware
 ===============================
+[![Build Status](https://travis-ci.org/gonsfx/enforce-content-type.svg?branch=master)](https://travis-ci.org/gonsfx/enforce-content-type)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 This middleware enforces the `Content-Type` header of requests to have a specified value.

@@ -1,0 +1,39 @@
+{
+  "name": "enforce_content_type",
+  "version": "1.0.0",
+  "description": "Enforce Content-Type headers on request",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && mocha"
+  },
+  "author": "Christoph Werner <christoph@codepunkt.de>",
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "express",
+    "middleware",
+    "connect",
+    "content-type"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gonsfx/enforce_content_type"
+  },
+  "bugs": "https://github.com/gonsfx/enforce_content_type/issues",
+  "dependencies": {
+    "http-status-codes": "^1.0.6",
+    "lodash": "^4.11.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3",
+    "standard": "^6.0.8"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "beforeEach",
+      "it"
+    ]
+  }
+}

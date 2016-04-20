@@ -12,6 +12,7 @@
     "security",
     "express",
     "middleware",
+    "header",
     "connect",
     "content-type"
   ],

@@ -1,5 +1,5 @@
 {
-  "name": "enforce_content_type",
+  "name": "enforce-content-type",
   "version": "1.0.0",
   "description": "Enforce Content-Type headers on request",
   "main": "index.js",

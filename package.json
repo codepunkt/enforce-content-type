@@ -4,6 +4,7 @@
   "description": "Enforce Content-Type headers on request",
   "main": "index.js",
   "scripts": {
+    "coverage": "istanbul cover _mocha",
     "test": "standard && mocha"
   },
   "author": "Christoph Werner <christoph@codepunkt.de>",
@@ -27,6 +28,8 @@
     "lodash": "^4.11.1"
   },
   "devDependencies": {
+    "coveralls": "^2.11.9",
+    "istanbul": "^0.4.3",
     "mocha": "^2.4.5",
     "sinon": "^1.17.3",
     "standard": "^6.0.8"

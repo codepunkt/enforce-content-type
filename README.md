@@ -1,7 +1,8 @@
 Enforce Content-Type middleware
 ===============================
-[![Build Status](https://travis-ci.org/gonsfx/enforce-content-type.svg?branch=master)](https://travis-ci.org/gonsfx/enforce-content-type)
 [![npm version](https://badge.fury.io/js/enforce-content-type.svg)](https://badge.fury.io/js/enforce-content-type)
+[![Build Status](https://travis-ci.org/gonsfx/enforce-content-type.svg?branch=master)](https://travis-ci.org/gonsfx/enforce-content-type)
+[![Coverage Status](https://coveralls.io/repos/github/gonsfx/enforce-content-type/badge.svg?branch=master)](https://coveralls.io/github/gonsfx/enforce-content-type?branch=master)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 This middleware enforces the `Content-Type` header of requests to have a specified value.

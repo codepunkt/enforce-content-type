@@ -9,6 +9,7 @@
   "author": "Christoph Werner <christoph@codepunkt.de>",
   "license": "MIT",
   "keywords": [
+    "http",
     "security",
     "express",
     "middleware",

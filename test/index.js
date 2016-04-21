@@ -36,7 +36,7 @@ describe('enforceContentType', function () {
     assert(next.calledOnce)
   })
 
-  it('ends request with unsupported media type status', function () {
+  it('ends request with unsupported media type status on wrong content-type', function () {
     handler = enforceContentType({ type: json })
     req = mockRequest('text/html')
     handler(req, res, next)

@@ -1,19 +1,16 @@
-var HttpStatusCodes = require('http-status-codes')
+var httpStatusCodes = require('http-status-codes')
 var enforceContentType = require('..')
 
 var assert = require('assert')
-var sinon = require('sinon')
+var express = require('express')
+var request = require('supertest')
 
 describe('enforceContentType', function () {
-  var handler, req, res, next
+  var app
   var json = 'application/json'
-  var mockRequest = function (contentType) {
-    return { get: function () { return contentType } }
-  }
 
   beforeEach(function () {
-    res = { status: sinon.spy(), end: sinon.spy() }
-    next = sinon.spy()
+    app = express()
   })
 
   it('throws an error with invalid parameters', function () {
@@ -27,20 +24,46 @@ describe('enforceContentType', function () {
 
   it('does not throw an error with valid parameters', function () {
     assert.doesNotThrow(enforceContentType.bind(this, { type: json }))
+    assert.doesNotThrow(enforceContentType.bind(this, { type: [ json ] }))
   })
 
-  it('calls next on correct content-type', function () {
-    handler = enforceContentType({ type: json })
-    req = mockRequest(json)
-    handler(req, res, next)
-    assert(next.calledOnce)
+  it('calls next on correct content-type', function (done) {
+    app.use(enforceContentType({ type: 'application/json', force: true }))
+    app.get('/', function (req, res) { res.send('hello world') })
+
+    request(app)
+      .get('/')
+      .set('content-type', 'application/json')
+      .expect(httpStatusCodes.OK, done)
   })
 
-  it('ends request with unsupported media type status on wrong content-type', function () {
-    handler = enforceContentType({ type: json })
-    req = mockRequest('text/html')
-    handler(req, res, next)
-    assert(res.status.calledWith(HttpStatusCodes.UNSUPPORTED_MEDIA_TYPE))
-    assert(res.end.calledOnce)
+  it('calls next on wrong content-type without a body', function (done) {
+    app.use(enforceContentType({ type: [ 'application/json' ] }))
+    app.get('/', function (req, res) { res.send('hello world') })
+
+    request(app)
+      .get('/')
+      .set('content-type', 'text/html')
+      .expect(httpStatusCodes.OK, done)
+  })
+
+  it('sends 415 on wrong content-type without a body when forced', function (done) {
+    app.use(enforceContentType({ type: [ 'application/json' ], force: true }))
+    app.get('/', function (req, res) { res.send('hello world') })
+
+    request(app)
+      .get('/')
+      .set('content-type', 'text/html')
+      .expect(httpStatusCodes.UNSUPPORTED_MEDIA_TYPE, done)
+  })
+
+  it('sends 415 on wrong content-type', function (done) {
+    app.use(enforceContentType({ type: [ 'application/json' ] }))
+    app.post('/', function (req, res) { res.send('hello world') })
+
+    request(app)
+      .post('/')
+      .set('content-type', 'text/html')
+      .expect(httpStatusCodes.UNSUPPORTED_MEDIA_TYPE, done)
   })
 })

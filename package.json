@@ -25,14 +25,16 @@
   "bugs": "https://github.com/gonsfx/enforce_content_type/issues",
   "dependencies": {
     "http-status-codes": "^1.0.6",
-    "lodash": "^4.11.1"
+    "lodash": "^4.11.1",
+    "type-is": "^1.6.12"
   },
   "devDependencies": {
     "coveralls": "^2.11.9",
+    "express": "^4.13.4",
     "istanbul": "^0.4.3",
     "mocha": "^2.4.5",
-    "sinon": "^1.17.3",
-    "standard": "^6.0.8"
+    "standard": "^6.0.8",
+    "supertest": "^1.2.0"
   },
   "standard": {
     "globals": [
